@@ -17,8 +17,8 @@ const registerUser = async (req, res) => {
 
   const resultRol =req.body.roleId;
   let role;
-  if(resultRol ==="admin"){
-    role = await Role.findOne({ name: "admin" });
+  if(resultRol){
+    role = await Role.findOne({ name: resultRol });
   }else {
     role = await Role.findOne({ name: "user" });
   }

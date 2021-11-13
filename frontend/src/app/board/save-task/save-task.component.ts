@@ -37,6 +37,7 @@ export class SaveTaskComponent implements OnInit {
       this.openSnackBarError();
       this.registerData = {};
     } else {
+
       this._boardService.saveTask(this.registerData).subscribe(
         (res) => {
           this._router.navigate(['/listTask']);
@@ -63,7 +64,10 @@ export class SaveTaskComponent implements OnInit {
       this.registerData = {};
     } else {
       const data = new FormData();
-      data.append('image', this.selectedFile, this.selectedFile.name);
+      if (this.selectedFile != null){
+        data.append('image',this.selectedFile,this.selectedFile.name);
+      }
+      
       data.append('name', this.registerData.name);
       data.append('description', this.registerData.description);
 
